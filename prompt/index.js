@@ -1,8 +1,28 @@
 // install express with `npm install express` 
 const express = require('express')
-const app = express()
+const fetch = require('node-fetch')
 
-app.get('/', (req, res) => res.send('Hello World!'))
+const app = express()
+// fetch('https://api.reddit.com/r/WritingPrompts/new.json')
+//     .then(res => console.log(res))
+//     .then(data => console.log(data))
+
+fetch('https://www.reddit.com/r/writingprompts/new.json')
+    .then(function(res) {
+        return res.json();   // Convert the data into JSON
+    })
+    .then(function(data) {
+        flair = data.data.children[0].data['link_flair_richtext'][0]['t']   
+        if(flair == 'Writing Prompt' || flair == 'Reality Fiction' || flair == 'Simple Prompt'){
+            console.log(data.data.children[0].data['title'].split(']')[1])
+        }
+    })
+    .catch(function(err) {
+        console.log(err);   // Log error if any
+    })
+
+
+app.get('/', (req, res) => res.sendfile('index.html'))
 
 
 const PORT = process.env.PORT || 3000
