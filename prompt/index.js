@@ -15,7 +15,10 @@ fetch('https://www.reddit.com/r/writingprompts/new.json')
         const index = Math.floor(Math.random() * 26) + 1
         console.log(index)
         flair = data.data.children[index].data['link_flair_richtext'][0]['t']   
-        if(flair == 'Writing Prompt' || flair == 'Reality Fiction' || flair == 'Simple Prompt'){
+        console.log(flair)
+        if(flair == 'Writing Prompt' || flair == 'Reality Fiction' || flair == 'Simple Prompt'
+        || flair == 'Established Universe' || flair == 'Constrained Writing' || flair == 'Theme Thursday'){
+
             console.log(data.data.children[index].data['title'].split(']')[1])
         }
     })
