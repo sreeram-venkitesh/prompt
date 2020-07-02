@@ -12,9 +12,11 @@ fetch('https://www.reddit.com/r/writingprompts/new.json')
         return res.json();   // Convert the data into JSON
     })
     .then(function(data) {
-        flair = data.data.children[0].data['link_flair_richtext'][0]['t']   
+        const index = Math.floor(Math.random() * 26) + 1
+        console.log(index)
+        flair = data.data.children[index].data['link_flair_richtext'][0]['t']   
         if(flair == 'Writing Prompt' || flair == 'Reality Fiction' || flair == 'Simple Prompt'){
-            console.log(data.data.children[0].data['title'].split(']')[1])
+            console.log(data.data.children[index].data['title'].split(']')[1])
         }
     })
     .catch(function(err) {
