@@ -32,7 +32,7 @@ startButton.addEventListener('click',()=>{
   textArea.style = " width: 80%; margin-left:auto; margin-right:auto;"
   textArea.scrollIntoView({ block: 'end', behavior: 'smooth' })
 
-
+  
   fetch('https://www.reddit.com/r/writingprompts/new.json')
       .then(function(res) {
           return res.json();   // Convert the data into JSON
@@ -64,13 +64,14 @@ startButton.addEventListener('click',()=>{
             }  
             typeWriterText()
             //promptText.innerText = data.data.children[index].data['title'].split('] ')[1]
-            promptText.focus()
+            
           }else if(flair == 'Image Prompt' || flair == 'Media Prompt'){
             location.reload()
           }
           if(data.data.children[index].data['title'].split('] ')[1] == 'undefined'){
             location.reload()
           }
+          promptText.focus()
       })
       .catch(function(err) {
           location.reload()
