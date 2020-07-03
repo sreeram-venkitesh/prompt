@@ -29,7 +29,7 @@
 
         
 
-        <div class="row" style="display: flex;">
+        <div class="row" style="display: flex; padding-top: 0px; padding-bottom:0px;">
 
             <div class="col" style="float: left; text-align: left;">
                 <h4 class="title" style="margin-left: auto; margin-right:auto; width:60%">
@@ -48,24 +48,35 @@
 
         </div>
 
-        <div class="row">
+        <div class="row" style="padding-top: 0px; padding-bottom:0px;">
             <h4 class="title" style="margin-left: auto; margin-right:auto; width:80%; text-align:center;">
                 Prompts works by fetching posts from <span><a target="_blank" href="https://reddit.com/r/WritingPrompts">r/WritingPrompts</a></span> 
                 and starts a story which you can complete writing.  
             </h4>
         </div>
 
+        <div class="row" style="padding-top: 0px; padding-bottom:0px; text-align:center">
+            <button id="startButton" style="margin-left:auto; margin-right:auto;">🚀 Get Started!</button>
+        </div>
+        <br/>
+
+
+
+
     </div>
 
     <br/>
     <br/>
-    <br/>
+    
+
 
     
-    <div class="row" style="width: 80%; margin-left:auto; margin-right:auto;">
+    <div id="textArea" class="row" style="display:none; width: 80%; margin-left:auto; margin-right:auto;">
         <textarea id='promptText' style="width: 100%; height:500px; font-size:xx-large"></textarea>
     </div>
 
+    <br/>
+    <br/>
     <a href="https://deta.sh/" target="_blank" class="w-inline-block w-clearfix powered-by" style="background-color: rgb(246, 246, 246);">
         <svg class="devolio-logo" width="40" height="40" xmlns="http://www.w3.org/2000/svg"><path fill="none" d="M-1-1h42v42H-1z"></path><g><g stroke="null"><circle fill="#ef39a8" r="18.801" cy="20" cx="20"></circle><circle fill="#bd399c" r="15.042" cy="20" cx="20"></circle><circle fill="#93388e" r="11.281" cy="20" cx="20"></circle><circle fill="#563379" r="7.521" cy="20" cx="20"></circle></g></g></svg>
         <div class="by-devolio">Powered by
