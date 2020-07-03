@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prompts</title>
+</head>
+<body>
+    <h1>Prompts</h1>
+    <p id='promptText'></p>
+    <script>
+        const promptText = document.getElementById('promptText')
+        promptText.innerText = 'Loading...'
+        console.log("welcome to prompts")
+        console.log('Loggin from client data is ')
+        fetch('https://www.reddit.com/r/writingprompts/new.json')
+        .then(function(res) {
+            return res.json();   // Convert the data into JSON
+        })
+        .then(function(data) {
+            const index = Math.floor(Math.random() * 26) + 1
+            console.log(index)
+            flair = data.data.children[index].data['link_flair_richtext'][0]['t']   
+            console.log(flair)
+            if(flair == 'Writing Prompt' || flair == 'Reality Fiction' || flair == 'Simple Prompt'
+            || flair == 'Established Universe' || flair == 'Constrained Writing' || flair == 'Theme Thursday'){
+
+                //console.log(data.data.children[index].data['title'].split('] ')[1])
+                promptText.innerText = data.data.children[index].data['title'].split('] ')[1]
+            }
+        })
+        .catch(function(err) {
+            location.reload()
+            console.log(err);   // Log error if any
+        })
+        
+    </script>
+</body>
+</html>
