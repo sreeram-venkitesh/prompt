@@ -29,7 +29,7 @@ const textArea = document.getElementById('textArea')
 startButton.addEventListener('click',()=>{
 
 
-  textArea.style.display = 'block'
+  textArea.style = "width: 80%; margin-left:auto; margin-right:auto;"
   textArea.scrollIntoView({ behavior: 'smooth', block: 'center' })
   fetch('https://www.reddit.com/r/writingprompts/new.json')
       .then(function(res) {
