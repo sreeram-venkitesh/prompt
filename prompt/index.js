@@ -9,13 +9,13 @@ app.set('view engine', 'ejs');
 app.get('/', (req, res) => res.render('index'))
 
 
-const PORT = process.env.PORT || 3000
+const PORT = 3000
 
-app.listen(PORT,()=>{
-    if(PORT===3000){
-        console.log('listening to port 3000')
-    }
-})
+if(!process.env.DETA_RUNTIME){
+    app.listen(PORT,()=>{
+        console.log('Listening to local port')
+    })
+}
 
 // export 'app'
-//module.exports = app
+module.exports = app
