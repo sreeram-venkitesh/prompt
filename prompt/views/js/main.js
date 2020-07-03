@@ -27,10 +27,12 @@ const startButton = document.getElementById('startButton')
 const textArea = document.getElementById('textArea')
 
 startButton.addEventListener('click',()=>{
+  textArea.scrollTop = textArea.scrollHeight 
+
+  textArea.style = " width: 80%; margin-left:auto; margin-right:auto;"
+  textArea.scrollIntoView({ block: 'end', behavior: 'smooth' })
 
 
-  textArea.style = "width: 80%; margin-left:auto; margin-right:auto;"
-  textArea.scrollIntoView({ behavior: 'smooth', block: 'center' })
   fetch('https://www.reddit.com/r/writingprompts/new.json')
       .then(function(res) {
           return res.json();   // Convert the data into JSON
@@ -42,6 +44,7 @@ startButton.addEventListener('click',()=>{
           console.log(flair)
           if(flair == 'Writing Prompt' || flair == 'Reality Fiction' || flair == 'Simple Prompt'
           || flair == 'Established Universe' || flair == 'Constrained Writing' || flair == 'Theme Thursday'){
+
             promptText.value =""
             story = data.data.children[index].data['title'].split('] ')[1]
             console.log(story)
@@ -74,6 +77,7 @@ startButton.addEventListener('click',()=>{
           //promptText.innerText = 'There seems to be an error in fetching the data. Try reloading the page!'
           console.log(err);   // Log error if any
       })
+     
 
 })
 
