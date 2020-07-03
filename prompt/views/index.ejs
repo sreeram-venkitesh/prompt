@@ -4,36 +4,70 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Prompts</title>
+    <link rel="stylesheet" href="https://unpkg.com/wingcss"/>
+    <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-    <h1>Prompts</h1>
-    <p id='promptText'></p>
-    <script>
-        const promptText = document.getElementById('promptText')
-        promptText.innerText = 'Loading...'
-        console.log("welcome to prompts")
-        console.log('Loggin from client data is ')
-        fetch('https://www.reddit.com/r/writingprompts/new.json')
-        .then(function(res) {
-            return res.json();   // Convert the data into JSON
-        })
-        .then(function(data) {
-            const index = Math.floor(Math.random() * 26) + 1
-            console.log(index)
-            flair = data.data.children[index].data['link_flair_richtext'][0]['t']   
-            console.log(flair)
-            if(flair == 'Writing Prompt' || flair == 'Reality Fiction' || flair == 'Simple Prompt'
-            || flair == 'Established Universe' || flair == 'Constrained Writing' || flair == 'Theme Thursday'){
+    
+    <br/>
+    <div style="
+    background-color:white;
+    border:0.3em;
+    border-style:solid;
+    border-radius:0.5em;
+    border-color:black;
+    position:relative;
+    z-index: 1;
+    height: 100%;
+    min-width: 50px;
+    max-width: 1300px;
+    margin: 0 auto;""> 
 
-                //console.log(data.data.children[index].data['title'].split('] ')[1])
-                promptText.innerText = data.data.children[index].data['title'].split('] ')[1]
-            }
-        })
-        .catch(function(err) {
-            location.reload()
-            console.log(err);   // Log error if any
-        })
+        <div class="row" style="padding-left:5em; padding-right:5em; padding-top:2.5em;">
+            <h1 id="title" style=" width:100%; text-align: center;"></h1>
+        </div>
+
         
-    </script>
+
+        <div class="row" style="display: flex;">
+
+            <div class="col" style="float: left;">
+                <p>Yes, writing is hard. 
+                <br/>
+                </p>
+            </div>
+
+            <div class="col" style="text-align: center; padding-top:2em; padding-right:auto; padding-left:auto;">
+                <img src="./messy.png" style="width:80%; height:auto; margin-left:auto; margin-right:auto;">
+            </div>
+
+        </div>
+
+        <div class="row">
+            <p> Helooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo</p>
+
+        </div>
+
+    </div>
+
+    <br/>
+    <br/>
+    <br/>
+
+    
+    <div style="width: 60%; text-align:center; margin-left:auto; margin-right:auto;">
+        <textarea id='promptText' style="width: 100%; height:100px;"></textarea>
+
+    </div>
+
+    <a href="https://deta.sh/" target="_blank" class="w-inline-block w-clearfix powered-by" style="background-color: rgb(246, 246, 246);">
+        <svg class="devolio-logo" width="40" height="40" xmlns="http://www.w3.org/2000/svg"><path fill="none" d="M-1-1h42v42H-1z"></path><g><g stroke="null"><circle fill="#ef39a8" r="18.801" cy="20" cx="20"></circle><circle fill="#bd399c" r="15.042" cy="20" cx="20"></circle><circle fill="#93388e" r="11.281" cy="20" cx="20"></circle><circle fill="#563379" r="7.521" cy="20" cx="20"></circle></g></g></svg>
+        <div class="by-devolio">Powered by
+        <span class="devolio">DETA</span>
+        </div>
+    </a>
+    
+
+    <script src="js/main.js"></script>
 </body>
 </html>
