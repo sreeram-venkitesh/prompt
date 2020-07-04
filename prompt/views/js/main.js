@@ -68,8 +68,9 @@ function setStory(data){
         setStory(story)
   }
   if(data.data.children[index].data['title'].split('] ')[1] == 'undefined'){
-    // location.reload()
-    setStory(story)
+     location.reload()
+     startButton.click()
+    //setStory(story)
   }
   promptText.focus()  
 }
@@ -117,7 +118,7 @@ makeTextFile = function (text) {
 }
 
 
-
+// Downloading story as text file
 exportButton.addEventListener('click',()=>{
   var exportLink = document.getElementById('exportLink')
   if(confirm('Download story as text file?')){
@@ -131,6 +132,7 @@ reloadButton.addEventListener('click',()=>{
   setStory(stories)
 })
 
+// Going back to home
 homeButton.addEventListener('click',()=>{
   textArea.style.opacity = '0'
   titleCard.style.opacity = '1'
@@ -144,10 +146,15 @@ homeButton.addEventListener('click',()=>{
   titleCard.scrollIntoView({ block: 'start', behavior: 'smooth' })
 
 })
+
+// Timer button and its elements
 var totalSeconds =0
 
-var minutes = document.getElementById('minutes')
-var seconds = document.getElementById('seconds')
+const minutes = document.getElementById('minutes')
+const seconds = document.getElementById('seconds')
+
+var wpm = document.getElementById('wpm')
+
 
 function setTime(){
   totalSeconds++
@@ -166,14 +173,36 @@ function pad(val) {
 
 timer = null
 
+var iLastTime = 0;
+var iTime = 0;
+var iTotal = 0;
+var iKeys = 0;
+
 timerButton.addEventListener('click',()=>{
   
   if(timerBar.style.opacity == '0'){
+    
     timerBar.style.opacity = '1'
     timerButton.innerText = 'Stop Timer'
-   
     timer = setInterval(setTime,1000)
-  
+
+   
+    promptText.onkeypress = function(){
+      iTime = new Date().getTime()
+
+      if (iLastTime != 0) {
+          iKeys++
+          iTotal += iTime - iLastTime
+          iWords = promptText.value.split(' ').length
+          //$('#CPM').html(Math.round(iKeys / iTotal * 6000, 2));
+          //wpm.innerText = (Math.round(iWords / iTotal * 6000, 2))
+          wpm.innerText = (Math.round(iKeys / iTotal * 6000, 2))
+
+      }
+
+      iLastTime = iTime
+    }
+    
   }else if(timerBar.style.opacity == '1'){
     
     timerButton.innerText = 'Start Timer'
@@ -181,6 +210,8 @@ timerButton.addEventListener('click',()=>{
     
     clearInterval(timer)
     stop()
+    promptText.onkeypress = () =>{
+    }
     totalSeconds =0
     minutes.innerText = '00'
     seconds.innerText = '00'
