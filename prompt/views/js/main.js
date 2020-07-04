@@ -12,9 +12,9 @@ const homeButton = document.getElementById('homeButton')
 
 promptText.innerText = 'Loading...'
 
-var i = 0;
-var txt = 'prompts'; /* The text */
-var speed = 200; /* The speed/duration of the effect in milliseconds */
+var i = 0
+var txt = 'prompts'
+
 
 function typeWriterTitle() {
   if (i < txt.length) {
@@ -22,7 +22,7 @@ function typeWriterTitle() {
     document.getElementById("title").innerText += txt.charAt(i);
     i++;
     document.getElementById("title").innerText += '|'
-    setTimeout(typeWriterTitle, speed);
+    setTimeout(typeWriterTitle, 200)
   }
   else if(i == txt.length){
     document.getElementById("title").innerText = document.getElementById("title").innerText.slice(0,-1)
@@ -32,6 +32,45 @@ function typeWriterTitle() {
 
 typeWriterTitle()
 
+var stories = ''
+
+function setStory(data){
+ 
+  const index = Math.floor(Math.random() * 26) + 1
+  flair = data.data.children[index].data['link_flair_richtext'][0]['t']
+  if(flair == 'Writing Prompt' || flair == 'Reality Fiction' || flair == 'Simple Prompt'
+      || flair == 'Established Universe' || flair == 'Constrained Writing' || flair == 'Theme Thursday'){
+
+        promptText.value =""
+        story = data.data.children[index].data['title'].split('] ')[1]
+        console.log(story)
+        var j=0
+        function typeWriterText() {
+          if (j < story.length) {
+            promptText.value = promptText.value.slice(0,-1)
+            promptText.value += story.charAt(j)
+            j++
+            promptText.value += '|'
+            setTimeout(typeWriterText, 30)
+          }
+          else if(j == story.length){
+            promptText.value = promptText.value.slice(0,-1)
+        
+          }
+        }  
+        typeWriterText()
+        //promptText.innerText = data.data.children[index].data['title'].split('] ')[1]
+        
+      }else if(flair == 'Image Prompt' || flair == 'Media Prompt'){
+        //location.reload()
+        setStory(story)
+      }
+      if(data.data.children[index].data['title'].split('] ')[1] == 'undefined'){
+        // location.reload()
+        setStory(story)
+      }
+      promptText.focus()   
+}
 
 startButton.addEventListener('click',()=>{
   textArea.scrollTop = textArea.scrollHeight 
@@ -42,7 +81,7 @@ startButton.addEventListener('click',()=>{
     },300
   )
   detaBanner.style.display = 'none'
-  textArea.style = "display:block; width: 80%; margin-left:auto; margin-right:auto;"
+  textArea.style = "display:block; opacity:1; width: 80%; transition : all .3s; -wekit-transition : all .3s; -moz-transition : all .3s; margin-left:auto; margin-right:auto;"
   textArea.scrollIntoView({ block: 'end', behavior: 'smooth' })
 
   
@@ -51,48 +90,14 @@ startButton.addEventListener('click',()=>{
           return res.json();   // Convert the data into JSON
       })
       .then(function(data) {
-          const index = Math.floor(Math.random() * 26) + 1
-          console.log(index)
-          flair = data.data.children[index].data['link_flair_richtext'][0]['t']   
-          console.log(flair)
-          if(flair == 'Writing Prompt' || flair == 'Reality Fiction' || flair == 'Simple Prompt'
-          || flair == 'Established Universe' || flair == 'Constrained Writing' || flair == 'Theme Thursday'){
-
-            promptText.value =""
-            story = data.data.children[index].data['title'].split('] ')[1]
-            console.log(story)
-            var j=0
-            function typeWriterText() {
-              if (j < story.length) {
-                promptText.value = promptText.value.slice(0,-1)
-                promptText.value += story.charAt(j);
-                j++;
-                promptText.value += '|'
-                setTimeout(typeWriterText, 30);
-              }
-              else if(j == story.length){
-                promptText.value = promptText.value.slice(0,-1)
-            
-              }
-            }  
-            typeWriterText()
-            //promptText.innerText = data.data.children[index].data['title'].split('] ')[1]
-            
-          }else if(flair == 'Image Prompt' || flair == 'Media Prompt'){
-            location.reload()
-          }
-          if(data.data.children[index].data['title'].split('] ')[1] == 'undefined'){
-            location.reload()
-          }
-          promptText.focus()
+          stories = data
+          setStory(data)
       })
       .catch(function(err) {
           location.reload()
           //promptText.innerText = 'There seems to be an error in fetching the data. Try reloading the page!'
           console.log(err);   // Log error if any
       })
-     
-
 })
 
 exportButton.addEventListener('click',()=>{
@@ -100,15 +105,26 @@ exportButton.addEventListener('click',()=>{
 })
 
 reloadButton.addEventListener('click',()=>{
-
+  promptText.innerText = 'Loading...'
+  setStory(stories)
 })
 
 homeButton.addEventListener('click',()=>{
+  textArea.style.opacity = '0'
+  titleCard.style.opacity = '1'
+  window.setTimeout(
+    ()=>{
+      textArea.style.display = 'none'
+      titleCard.style.display = 'block'
+      detaBanner.style.display = 'block'
+    },300
+  )
+  titleCard.scrollIntoView({ block: 'start', behavior: 'smooth' })
 
 })
 
 timerButton.addEventListener('click',()=>{
-  
+
 })
 
 
