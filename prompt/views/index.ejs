@@ -56,7 +56,7 @@
 
         <div class="row" style="padding-top: 0px; padding-bottom:0px;">
             <h5 class="title" style="margin-left: auto; margin-right:auto; width:80%; text-align:center; margin-bottom:10px; margin-top:20px;">
-                prompts works by fetching posts from the <span><a class="mainLinks" target="_blank" href="https://reddit.com/r/WritingPrompts">r/WritingPrompts</a></span> 
+                prompts works by fetching posts from the <span><a class="mainLinks" style="padding: 3px;;" target="_blank" href="https://reddit.com/r/WritingPrompts">r/WritingPrompts</a></span> 
                 subreddit and starts a story for you which you can continue writing. There are several options such as to challenge yourself with a timer 
                 or you can write at your own pace and export the story to your device
             </h5>
@@ -83,6 +83,7 @@
     -wekit-transition : all .3s;
     -moz-transition : all .3s;
     opacity:0;
+    text-align:center;
     margin-left:auto;
     margin-right:auto;">
 
@@ -111,26 +112,27 @@
         margin-right:auto;
         padding-top:0px;">
             <h5 style="float:left; color:rgb(112, 112, 112); margin-top:0px; margin-bottom:0px; "> <span id="minutes">00</span> : <span id="seconds">00</span> </h5>
-            <h5 style="float:right; color:rgb(112, 112, 112); margin-top:0px; margin-bottom:0px;">Max typing speed : <span id="wpm">0</span> wpm</h5>
+            <h5 style="float:right; color:rgb(112, 112, 112); margin-top:0px; margin-bottom:0px;">Typing speed : <span id="wpm">0</span> wpm</h5>
         </div>
 
         <div class="row" 
         style="width: fit-content;
+        display:flex;
         margin-left:auto;
         margin-right:auto;
         padding-bottom:0px;
         padding-top:0px;
         ">
-            <button id="timerButton" style="margin-right: 10px;">
+            <button class="options" id="timerButton" style="margin-right: 10px;">
                 Start Timer
             </button>
-            <button id="exportButton" style="margin-right: 10px;"> 
+            <button class="options" id="exportButton" style="margin-right: 10px;  "> 
                 <a download='story.txt' id='exportLink' class='buttonLink'>Export Story</a>
             </button>
-            <button id="reloadButton" style="margin-right: 10px;">
+            <button  class="options" id="reloadButton" style="margin-right: 10px; ">
                 Get Another Prompt
             </button>
-            <button id="homeButton" style="margin-right: 10px;">
+            <button class="options" id="homeButton" style="margin-right: 10px;  ">
                 Go Back Home
             </button>
         </div>

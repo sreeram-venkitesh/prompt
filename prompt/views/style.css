@@ -260,3 +260,11 @@ background-color: #FF6600
 .resp-sharing-button--telegram:hover {
   background-color: #4B97D1;}
 
+@media screen and (max-device-width: 562px){
+.options{
+    min-width: 300px;
+    /* margin-left:10px; */
+    display:block;
+}
+}
+
