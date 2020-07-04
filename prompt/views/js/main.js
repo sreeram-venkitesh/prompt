@@ -1,8 +1,19 @@
 const promptText = document.getElementById('promptText')
+
+const startButton = document.getElementById('startButton')
+const textArea = document.getElementById('textArea')
+const titleCard = document.getElementById('titleCard')
+const detaBanner = document.getElementById('detaBanner')
+
+const timerButton = document.getElementById('timerButton')
+const exportButton = document.getElementById('exportButton')
+const reloadButton = document.getElementById('reloadButton')
+const homeButton = document.getElementById('homeButton')
+
 promptText.innerText = 'Loading...'
 
 var i = 0;
-var txt = 'Prompts'; /* The text */
+var txt = 'prompts'; /* The text */
 var speed = 200; /* The speed/duration of the effect in milliseconds */
 
 function typeWriterTitle() {
@@ -19,17 +30,19 @@ function typeWriterTitle() {
   }
 }
 
-
-
 typeWriterTitle()
 
-const startButton = document.getElementById('startButton')
-const textArea = document.getElementById('textArea')
 
 startButton.addEventListener('click',()=>{
   textArea.scrollTop = textArea.scrollHeight 
-
-  textArea.style = " width: 80%; margin-left:auto; margin-right:auto;"
+  titleCard.style.opacity = '0'
+  window.setTimeout(
+    ()=>{
+      titleCard.style.display = 'none'
+    },300
+  )
+  detaBanner.style.display = 'none'
+  textArea.style = "display:block; width: 80%; margin-left:auto; margin-right:auto;"
   textArea.scrollIntoView({ block: 'end', behavior: 'smooth' })
 
   
@@ -80,6 +93,22 @@ startButton.addEventListener('click',()=>{
       })
      
 
+})
+
+exportButton.addEventListener('click',()=>{
+
+})
+
+reloadButton.addEventListener('click',()=>{
+
+})
+
+homeButton.addEventListener('click',()=>{
+
+})
+
+timerButton.addEventListener('click',()=>{
+  
 })
 
 
