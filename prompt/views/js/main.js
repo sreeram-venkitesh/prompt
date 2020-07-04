@@ -94,7 +94,8 @@ startButton.addEventListener('click',()=>{
           setStory(data)
       })
       .catch(function(err) {
-          location.reload()
+          //location.reload()
+          setStory(data)
           //promptText.innerText = 'There seems to be an error in fetching the data. Try reloading the page!'
           console.log(err);   // Log error if any
       })
@@ -116,7 +117,7 @@ homeButton.addEventListener('click',()=>{
     ()=>{
       textArea.style.display = 'none'
       titleCard.style.display = 'block'
-      detaBanner.style.display = 'block'
+      detaBanner.style.display = ''
     },300
   )
   titleCard.scrollIntoView({ block: 'start', behavior: 'smooth' })
