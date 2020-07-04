@@ -98,7 +98,7 @@ startButton.addEventListener('click',()=>{
       })
       .catch(function(err) {
           //location.reload()
-          setStory(data)
+          setStory(story)
           //promptText.innerText = 'There seems to be an error in fetching the data. Try reloading the page!'
           console.log(err);   // Log error if any
       })
