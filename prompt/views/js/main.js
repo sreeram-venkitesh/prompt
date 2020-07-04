@@ -101,8 +101,27 @@ startButton.addEventListener('click',()=>{
       })
 })
 
-exportButton.addEventListener('click',()=>{
+var textFile = null
 
+makeTextFile = function (text) {
+  var data = new Blob([text], {type: 'text/plain'})
+  // If we are replacing a previously generated file we need to
+  // manually revoke the object URL to avoid memory leaks.
+  if (textFile !== null) {
+    window.URL.revokeObjectURL(textFile)
+  }
+  textFile = window.URL.createObjectURL(data)
+  return textFile
+}
+
+
+
+exportButton.addEventListener('click',()=>{
+  var exportLink = document.getElementById('exportLink')
+  if(confirm('Download story as text file?')){
+    exportLink.href = makeTextFile(promptText.value)
+  }
+  return false
 })
 
 reloadButton.addEventListener('click',()=>{

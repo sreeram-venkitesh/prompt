@@ -60,6 +60,22 @@ button:active {
     background-color: rgb(255, 255, 92);
 }
 
+.buttonLink{
+    color:#000;
+}
+.buttonLink:link{
+    color:#000;
+    text-decoration: none;
+}
+
+.buttonLink:hover{
+    color:#000;
+}
+
+.buttonLink:visited{
+    color:#000;
+}
+
   .resp-sharing-button__link,
 .resp-sharing-button__icon {
   display: inline-block
