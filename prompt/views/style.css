@@ -31,6 +31,10 @@ button:active {
     top: 0.2rem;
     box-shadow: none;
 }
+button:disabled{
+    color: #929292;
+    background-color: dimgrey;
+}
 /* .button {
     --color-dark: #333;
     --color-light: #fff;

@@ -10,6 +10,8 @@ const exportButton = document.getElementById('exportButton')
 const reloadButton = document.getElementById('reloadButton')
 const homeButton = document.getElementById('homeButton')
 
+const timerBar = document.getElementById('timerBar')
+
 promptText.innerText = 'Loading...'
 
 var i = 0
@@ -35,7 +37,7 @@ typeWriterTitle()
 var stories = ''
 
 function setStory(data){
- 
+  
   const index = Math.floor(Math.random() * 26) + 1
   flair = data.data.children[index].data['link_flair_richtext'][0]['t']
   if(flair == 'Writing Prompt' || flair == 'Reality Fiction' || flair == 'Simple Prompt'
@@ -61,15 +63,15 @@ function setStory(data){
         typeWriterText()
         //promptText.innerText = data.data.children[index].data['title'].split('] ')[1]
         
-      }else if(flair == 'Image Prompt' || flair == 'Media Prompt'){
+  }else if(flair == 'Image Prompt' || flair == 'Media Prompt'){
         //location.reload()
         setStory(story)
-      }
-      if(data.data.children[index].data['title'].split('] ')[1] == 'undefined'){
-        // location.reload()
-        setStory(story)
-      }
-      promptText.focus()   
+  }
+  if(data.data.children[index].data['title'].split('] ')[1] == 'undefined'){
+    // location.reload()
+    setStory(story)
+  }
+  promptText.focus()  
 }
 
 startButton.addEventListener('click',()=>{
@@ -142,8 +144,48 @@ homeButton.addEventListener('click',()=>{
   titleCard.scrollIntoView({ block: 'start', behavior: 'smooth' })
 
 })
+var totalSeconds =0
+
+var minutes = document.getElementById('minutes')
+var seconds = document.getElementById('seconds')
+
+function setTime(){
+  totalSeconds++
+  seconds.innerText = pad(totalSeconds % 60)
+  minutes.innerText = pad(parseInt(totalSeconds/60))
+}
+
+function pad(val) {
+  var valString = val + "";
+  if (valString.length < 2) {
+    return "0" + valString;
+  } else {
+    return valString;
+  }
+}
+
+timer = null
 
 timerButton.addEventListener('click',()=>{
+  
+  if(timerBar.style.opacity == '0'){
+    timerBar.style.opacity = '1'
+    timerButton.innerText = 'Stop Timer'
+   
+    timer = setInterval(setTime,1000)
+  
+  }else if(timerBar.style.opacity == '1'){
+    
+    timerButton.innerText = 'Start Timer'
+    timerBar.style.opacity = '0'
+    
+    clearInterval(timer)
+    stop()
+    totalSeconds =0
+    minutes.innerText = '00'
+    seconds.innerText = '00'
+   
+  }
 
 })
 

@@ -29,8 +29,8 @@
     max-width: 1300px;
     margin: 0 auto;"> 
 
-        <div class="row" style="padding-left:5em; padding-right:5em; padding-top:2.5em;">
-            <h1 id="title" style=" width:100%; text-align: center;"></h1>
+        <div class="row" style="padding-left:5em; padding-right:5em; padding-top:2.5em; ">
+            <h1 id="title" style=" width:fit-content; margin-left:auto; margin-right:auto; text-align: left;"></h1>
         </div>
 
         
@@ -101,13 +101,28 @@
             ></textarea>
         </div>
 
+        <div class="row"
+        id="timerBar"
+        style="
+        opacity:0;
+        width: 80%;
+        padding-bottom:0px;
+        margin-left:auto;
+        margin-right:auto;
+        padding-top:0px;">
+            <h5 style="float:left; color:rgb(112, 112, 112); margin-top:0px; margin-bottom:0px; "> <span id="minutes">00</span> : <span id="seconds">00</span> </h5>
+            <h5 style="float:right; color:rgb(112, 112, 112); margin-top:0px; margin-bottom:0px;"><span id="wpm"></span> Words per minute</h5>
+        </div>
+
         <div class="row" 
         style="width: fit-content;
         margin-left:auto;
         margin-right:auto;
-        padding-bottom:0px;">
+        padding-bottom:0px;
+        padding-top:0px;
+        ">
             <button id="timerButton" style="margin-right: 10px;">
-                Set Timer
+                Start Timer
             </button>
             <button id="exportButton" style="margin-right: 10px;"> 
                 <a download='story.txt' id='exportLink' class='buttonLink'>Export Story</a>
