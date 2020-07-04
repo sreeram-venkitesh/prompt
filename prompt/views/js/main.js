@@ -130,6 +130,7 @@ exportButton.addEventListener('click',()=>{
 reloadButton.addEventListener('click',()=>{
   promptText.innerText = 'Loading...'
   setStory(stories)
+  promptText.focus()
 })
 
 // Going back to home
@@ -217,6 +218,7 @@ timerButton.addEventListener('click',()=>{
     seconds.innerText = '00'
    
   }
+  promptText.focus()
 
 })
 
