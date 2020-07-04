@@ -25,7 +25,7 @@ button {
   }
 button:hover{
     color:#333;
-    background-color: rgb(255, 255, 92);
+    background-color:#fff622;
 }
 button:active {
     top: 0.2rem;
@@ -61,7 +61,7 @@ button:disabled{
 }
 
 .mainLinks:hover{
-    background-color: rgb(255, 255, 92);
+    background-color:#fff622;
 }
 
 .buttonLink{
@@ -199,7 +199,7 @@ button:disabled{
 .resp-sharing-button--hackernews {
 background-color: #FF6600
 }
-.resp-sharing-button--hackernews:hover, .resp-sharing-button--hackernews:focus {   background-color: #FB6200 }
+.resp-sharing-button--hackernews:hover, .resp-sharing-button--hackernews:focus {   background-color: #FB3200 }
 
 .resp-sharing-button--vk {
   background-color: #507299
@@ -238,8 +238,8 @@ background-color: #FF6600
 
 .resp-sharing-button--reddit:hover,
 .resp-sharing-button--reddit:active {
-  background-color: #FF4500;
-  border-color: #FF4500;
+  background-color: rgb(175, 81, 27);
+  border-color: rgb(175, 81, 27);
 }
 
 .resp-sharing-button--whatsapp {
