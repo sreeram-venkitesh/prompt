@@ -12,3 +12,4 @@ Writing prompts from r/WritingPrompts on an interactive webapp
 
 * Run ```npm start``` from the directory and the site will be live at localhost:3000
 
+* Once you've made any changes to the site, you can deploy it with Deta using ```deta deploy``` from within the directory containing the .deta file
