@@ -68,7 +68,8 @@ function setStory(data){
         setStory(story)
   }
   if(data.data.children[index].data['title'].split('] ')[1] == 'undefined'){
-     location.reload()
+    // location.reload()
+    alert("Prompts couldn't fetch any data :( Try reloading please")
 
     //setStory(story)
   }
@@ -97,7 +98,8 @@ startButton.addEventListener('click',()=>{
           setStory(data)
       })
       .catch(function(err) {
-          location.reload()
+          // location.reload()
+          alert("Prompts couldn't fetch any data :( Try reloading please")
           //setStory(story)
           //promptText.innerText = 'There seems to be an error in fetching the data. Try reloading the page!'
           console.log(err);   // Log error if any
