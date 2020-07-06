@@ -69,7 +69,7 @@ function setStory(data){
   }
   if(data.data.children[index].data['title'].split('] ')[1] == 'undefined'){
      location.reload()
-     startButton.click()
+
     //setStory(story)
   }
   promptText.focus()  
@@ -98,7 +98,6 @@ startButton.addEventListener('click',()=>{
       })
       .catch(function(err) {
           location.reload()
-          startButton.click()
           //setStory(story)
           //promptText.innerText = 'There seems to be an error in fetching the data. Try reloading the page!'
           console.log(err);   // Log error if any
